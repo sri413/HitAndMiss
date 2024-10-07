@@ -1,0 +1,6 @@
+@Uroc.HitAndMiss_API_HostAddress = http://localhost:5098
+
+GET {{Uroc.HitAndMiss_API_HostAddress}}/game/
+Accept: application/json
+
+###
