@@ -9,17 +9,61 @@ namespace UROC.HitAndMiss.Core.Responses
 {
     public class HitAndMissGameResponse
     {
-        public HitAndMissDTO Game { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
-        /// Todo => This should be eventually driven from a data model . For now hard code this from a static return...
+        /// Get Game details wrt game ids.
         /// </summary>
         /// <param name="gameId"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        internal async static Task<HitAndMissGameResponse> GetGame_Test(long gameId)
+        /// <returns> Game Name and Decription specifying type of the game</returns>
+        /// <exception cref="Exception">
+        /// When <paramref name="gameId"/> doesn't match with list of game Ids. 
+        /// </exception>
+        internal async static Task<HitAndMissGameResponse> GetGameDetails(long gameId)
         {
-            throw new NotImplementedException();
+            HitAndMissGameResponse response = new HitAndMissGameResponse();
+
+            switch (gameId)
+            {
+                case 0:
+                    {
+                        response.Name = "Stars";
+                        response.Description = "A megaways game";
+                    };
+                    break;
+                case 1:
+                    {
+                        response.Name = "Sugar Rush";
+                        response.Description = "Line Pay";
+                    };
+                    break;
+                case 2:
+                    {
+                        response.Name = "Samurai Kings";
+                        response.Description = "Tumbling";
+                    };
+                    break;
+                case 3:
+                    {
+                        response.Name = "Eyes of the dragon";
+                        response.Description = "Line Pay";
+                    };
+                    break;
+                //case 4:
+                //    {
+                //        response.Name = "Stars";
+                //        response.Description = "A megaways game";
+                //    };
+                //    break;
+                default:
+                    {
+                        throw new Exception("Invalid Game details");
+                    };
+            }
+            return response;
         }
+        
+
     }
 }
